@@ -1,7 +1,10 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+    <img class="main-img" alt="Vue logo" src="./assets/main.jpg">
     <HelloWorld msg="Build your outfit"/>
+    <div id="column column 1">Tops</div>
+    <div id="column column 2"></div>
+    <div id="column column 3"></div>    
   </div>
 </template>
 
