@@ -2,7 +2,7 @@
   <div id="app">
     <HelloWorld msg="Build your outfit"/>
     <img class="main-img" alt="Vue logo" src="./assets/main.jpg">
-    <div class= "column-container">
+    <section class= "column-container">
       <div class="column column 1">
         <h2 class="section-name">Tops</h2>
         <h3 class="lists">lists</h3>
@@ -15,7 +15,9 @@
         <h2 class="section-name">Footwear</h2>
         <h3 class="lists">lists</h3>
       </div>
-    </div>
+    </section>
+    <section class="img-preview">box</section>
+    <section class="cart">another box</section>
   </div>
 </template>
 
