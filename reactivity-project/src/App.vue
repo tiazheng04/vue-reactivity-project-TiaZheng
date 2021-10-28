@@ -40,13 +40,13 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  padding: 2rem;
   font-size: 62.5%;
   background-color: rgb(160, 193, 236);
   height: 100vh;
 }
 .main-img{
-  width: 50vw;
+  width: 30vw;
   margin: 2rem 0rem 4rem;
   border-radius: 1rem;
 }
@@ -56,17 +56,29 @@ export default {
   width:90vw;
   justify-content: space-around;
   background-color: white;
-  height: 40vh;
+  height: 30rem;
+  align-items: center;
+  border-radius: 2rem;
+  padding: 3rem 0rem;
 }
 .section-name{
   border: solid;
   border-width: .1rem;
+  padding: 0.5rem 3rem;
 }
 
 .column{
-  width: 15rem;
-  height: 35vh;
-  
+  width: 20rem;
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: yellow; */
+  padding-bottom: 2rem;
+  border-left-style:dashed;
+  border-right-style:dashed;
+  border-width: .12rem;
+  border-radius: 1rem;
 }
 
 .lists{
@@ -75,6 +87,7 @@ export default {
   background-color: blue;
   height: 20rem;
   width: 14rem;
+  border-radius: 0.4rem;
 }
 
 </style>
