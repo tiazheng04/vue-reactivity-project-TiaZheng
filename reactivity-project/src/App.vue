@@ -5,7 +5,7 @@
     <section class="box">
       <section class= "column-container">
         <div class="column column1">
-          <h2 class="section-name">Tops</h2>
+          <h2 class="section-name">{{productType}}</h2>
           <h3 class="lists">lists</h3>
         </div>
         <div class="column column2">
@@ -32,7 +32,17 @@ export default {
   name: 'App',
   components: {
     HelloWorld
+  },
+  data(){
+    return{
+          productType: "Tops"
+
+
+    }
+
   }
+
+  
 }
 </script>
 
@@ -103,6 +113,7 @@ export default {
 
 .img-preview{
   background-color: orange;
+  width: 30rem;
 }
 
 .cart{
