@@ -5,7 +5,7 @@
     <section class="box">
       <section class= "column-container">
         <div class="column column1">
-          <h2 class="section-name">{{productType}}</h2>
+          <h2 class="section-name">Tops</h2>
           <h3 class="lists">lists</h3>
         </div>
         <div class="column column2">
@@ -35,7 +35,7 @@ export default {
   },
   data(){
     return{
-          productType: "Tops"
+      
 
 
     }
