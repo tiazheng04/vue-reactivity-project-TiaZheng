@@ -2,22 +2,26 @@
   <div id="app">
     <HelloWorld msg="Build your outfit"/>
     <img class="main-img" alt="Vue logo" src="./assets/main.jpg">
-    <section class= "column-container">
-      <div class="column column 1">
-        <h2 class="section-name">Tops</h2>
-        <h3 class="lists">lists</h3>
-      </div>
-      <div class="column column 1">
-        <h2 class="section-name">xxx</h2>
-        <h3 class="lists">lists</h3>
-      </div>
-      <div class="column column 1">
-        <h2 class="section-name">Footwear</h2>
-        <h3 class="lists">lists</h3>
-      </div>
+    <section class="box">
+      <section class= "column-container">
+        <div class="column column1">
+          <h2 class="section-name">Tops</h2>
+          <h3 class="lists">lists</h3>
+        </div>
+        <div class="column column2">
+          <h2 class="section-name">xxx</h2>
+          <h3 class="lists">lists</h3>
+        </div>
+        <div class="column column3">
+          <h2 class="section-name">Footwear</h2>
+          <h3 class="lists">lists</h3>
+        </div>
+        <button>Next</button>
+      </section>
+      <section class="img-preview">box</section>
+      <section class="cart">another box</section>
     </section>
-    <section class="img-preview">box</section>
-    <section class="cart">another box</section>
+
   </div>
 </template>
 
@@ -45,7 +49,7 @@ export default {
   padding: 2rem;
   font-size: 62.5%;
   background-color: rgb(160, 193, 236);
-  height: 100vh;
+  height: auto;
 }
 .main-img{
   width: 30vw;
@@ -54,14 +58,15 @@ export default {
 }
 .column-container{
   display:flex;
-  flex-direction: row;
-  width:90vw;
+  flex-direction: column;
+  width:30vw;
   justify-content: space-around;
   background-color: white;
   height: 30rem;
   align-items: center;
   border-radius: 2rem;
   padding: 3rem 0rem;
+  
 }
 .section-name{
   border: solid;
@@ -77,10 +82,7 @@ export default {
   align-items: center;
   /* background-color: yellow; */
   padding-bottom: 2rem;
-  border-left-style:dashed;
-  border-right-style:dashed;
-  border-width: .12rem;
-  border-radius: 1rem;
+
 }
 
 .lists{
@@ -88,8 +90,30 @@ export default {
   border-width: .1rem;
   background-color: blue;
   height: 20rem;
-  width: 14rem;
+  width: 18rem;
   border-radius: 0.4rem;
+}
+
+.box{
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  justify-content: space-around;
+}
+
+.img-preview{
+  background-color: orange;
+}
+
+.cart{
+  background-color: green;
+}
+.column2{
+  display: none;
+}
+
+.column3{
+  display: none;
 }
 
 </style>
