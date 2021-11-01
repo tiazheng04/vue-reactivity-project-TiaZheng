@@ -6,7 +6,7 @@
       <section class= "column-container">
         <div class="column column1">
           <h2 class="section-name">Tops</h2>
-          <h3 class="lists">lists</h3>
+          <h3 class="lists">{{types[0].item}}</h3>
         </div>
         <div class="column column2">
           <h2 class="section-name">xxx</h2>
@@ -35,15 +35,21 @@ export default {
   },
   data(){
     return{
-      
+      title: "hello",
+      types: [
+        {
+        item: "Black Shirt",
+        id: 1,
+        image: require('./assets/blackShirt.jpg'),
+        },
 
+      ],
 
     }
 
   }
-
-  
 }
+
 </script>
 
 <style>
@@ -96,9 +102,9 @@ export default {
 }
 
 .lists{
-  border-left: dashed;
+  /* border-left: dashed; */
   border-width: .1rem;
-  background-color: blue;
+  /* background-color: blue; */
   height: 20rem;
   width: 18rem;
   border-radius: 0.4rem;
