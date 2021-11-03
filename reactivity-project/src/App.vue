@@ -1,25 +1,20 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Build your outfit"/>
-    <img class="main-img" alt="Vue logo" src="./assets/main.jpg">
+    <HelloWorld msg="Shop"/>
+    <img :src="image" class="main-img" alt="Vue logo">
     <section class="box">
       <section class= "column-container">
-        <div class="column column1">
-          <h2 class="section-name">Tops</h2>
-          <h3 class="lists">{{types[0].item}}</h3>
+        <div class="column">
+          <h2 class="section-name">Selections</h2>
+          <div v-for="product in types" :key="product" class="lists">
+            <div>{{product.item}}</div>
+            <img class="img" :src="product.variantImage">
+          </div>
         </div>
-        <div class="column column2">
-          <h2 class="section-name">xxx</h2>
-          <h3 class="lists">lists</h3>
-        </div>
-        <div class="column column3">
-          <h2 class="section-name">Footwear</h2>
-          <h3 class="lists">lists</h3>
-        </div>
-        <button>Next</button>
       </section>
-      <section class="img-preview">box</section>
-      <section class="cart">another box</section>
+      <section class="cart">
+        <button @click ="cart()">Cart</button>
+      </section>
     </section>
 
   </div>
@@ -35,15 +30,49 @@ export default {
   },
   data(){
     return{
-      title: "hello",
+
+      cart: 0,
+      product: "Tops",
+      brand: "Vue Sadness",
+      image: require('./assets/main.jpg'),
       types: [
         {
         item: "Black Shirt",
-        id: 1,
-        image: require('./assets/blackShirt.jpg'),
+        variantImage: require('./assets/blackShirt.jpg'),
+        cost: "$10"
+        },
+                {
+        item: "Blue Button Down",
+        variantImage: require('./assets/blueButton.jpg'),
+        cost: "$10"
+        },
+                {
+        item: "Blue Hoodie",
+        variantImage: require('./assets/blueHoodie.jpg'),
+        cost: "$10"
+        },
+                {
+        item: "White Shirt",
+        variantImage: require('./assets/whiteShirt.jpg'),
+        cost: "$10"
+        },
+                {
+        item: "Black Zip Hoodie",
+        variantImage: require('./assets/zip.jpg'),
+        cost: "$10"
         },
 
       ],
+
+
+      methods: {
+        cart(){
+          this.cart +=1
+        },
+        total(){
+          this.total +=10
+        }
+      }
 
     }
 
@@ -75,7 +104,7 @@ export default {
 .column-container{
   display:flex;
   flex-direction: column;
-  width:30vw;
+  width:60vw;
   justify-content: space-around;
   background-color: white;
   height: 30rem;
@@ -94,7 +123,7 @@ export default {
   width: 20rem;
   height: 25rem;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
   /* background-color: yellow; */
   padding-bottom: 2rem;
@@ -106,8 +135,9 @@ export default {
   border-width: .1rem;
   /* background-color: blue; */
   height: 20rem;
-  width: 18rem;
+  /* width: 18rem; */
   border-radius: 0.4rem;
+  font-size: 1rem;
 }
 
 .box{
@@ -117,20 +147,19 @@ export default {
   justify-content: space-around;
 }
 
-.img-preview{
-  background-color: orange;
-  width: 30rem;
-}
+
 
 .cart{
   background-color: green;
-}
-.column2{
-  display: none;
+  width: 20vw;
 }
 
-.column3{
-  display: none;
+
+.img{
+  width: 20rem;
+  height: 20rem;
+  border-style: solid;
+padding: 2rem;
 }
 
 </style>
