@@ -4,8 +4,8 @@
     <img :src="image" class="main-img" alt="Vue logo">
     <section class="box">
       <section class= "column-container">
+        <h2 class="section-name">Selections</h2>
         <div class="column">
-          <h2 class="section-name">Selections</h2>
           <div v-for="product in types" :key="product" class="lists">
             <div>{{product.item}}</div>
             <img class="img" :src="product.variantImage">
@@ -122,10 +122,10 @@ export default {
 .column{
   width: 20rem;
   height: 25rem;
-  display: flex;
-  flex-wrap: wrap;
+  /* display: flex;
+  flex-direction: row; */
   align-items: center;
-  /* background-color: yellow; */
+  background-color: yellow;
   padding-bottom: 2rem;
 
 }
@@ -138,6 +138,8 @@ export default {
   /* width: 18rem; */
   border-radius: 0.4rem;
   font-size: 1rem;
+ /*  display: flex;
+  flex-direction: row; */
 }
 
 .box{
@@ -159,7 +161,9 @@ export default {
   width: 20rem;
   height: 20rem;
   border-style: solid;
-padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  
 }
 
 </style>
