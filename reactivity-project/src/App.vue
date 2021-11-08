@@ -8,7 +8,7 @@
         <div class="column">
           <div v-for="type in types" :key="type.id" class="lists" id="lists">
             <div @mouseover="displayImg(type.variantImage)">{{type.item}}</div>
-            <button v-onclick="addToCart">Add to Cart</button>
+            <button v-on:click="addToCart" >Add to Cart</button>
           </div>
         </div>
       </section>
@@ -33,8 +33,8 @@ export default {
   },
   data(){
     return{
-
-      cart: 0,
+      cartValue: 0,
+      cartList:[],
       product: "Tops",
       brand: "Vue Sadness",
       image: require('./assets/main.jpg'),
@@ -73,28 +73,29 @@ export default {
       ],
 
 
-      cartValue: 0,
-      cartList:[],
 
 
-      methods: {
+     
+
+      //  displayCart(){
+      //    this.cartList = 
+      //  }
+
+
+    }
+
+  },
+   methods: {
         addToCart() {
+     
           this.cartValue += 1
         },
 
         displayImg(variantImage) {
           this.image = variantImage
+          return variantImage;
         }
       },
-
-       displayCart(){
-         this.cartList = 
-       }
-
-
-    }
-
-  }
 }
 
 </script>
@@ -112,7 +113,7 @@ export default {
   padding: 2rem;
   font-size: 62.5%;
   background-color: rgb(160, 193, 236);
-  height: auto;
+  height: 100vh;
 }
 .main-img{
   width: 30vw;
