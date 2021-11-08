@@ -6,15 +6,18 @@
       <section class= "column-container">
         <h2 class="section-name">Selections</h2>
         <div class="column">
-          <div v-for="product in types" :key="product" class="lists">
-            <div>{{product.item}}</div>
-            <img class="img" :src="product.variantImage">
+          <div v-for="type in types" :key="type.id" class="lists" id="lists">
+            <div @mouseover="displayImg(type.variantImage)">{{type.item}}</div>
+            <button v-onclick="addToCart">Add to Cart</button>
           </div>
         </div>
       </section>
-      <section class="cart">
-        <button @click ="cart()">Cart</button>
+            <section class="img">
       </section>
+      <section class="cart">
+        <p>Cart({{cartValue}})</p>
+      </section>
+
     </section>
 
   </div>
@@ -39,40 +42,55 @@ export default {
         {
         item: "Black Shirt",
         variantImage: require('./assets/blackShirt.jpg'),
-        cost: "$10"
+        details:["100% cot,ton", "gender nuetral", "summer wear"],
+        id:1
         },
                 {
         item: "Blue Button Down",
         variantImage: require('./assets/blueButton.jpg'),
-        cost: "$10"
+        details:"material",
+        id:2
         },
                 {
         item: "Blue Hoodie",
         variantImage: require('./assets/blueHoodie.jpg'),
-        cost: "$10"
+        details:"material",
+        id:3
         },
                 {
         item: "White Shirt",
         variantImage: require('./assets/whiteShirt.jpg'),
-        cost: "$10"
+        details:"material",
+        id:4
         },
                 {
         item: "Black Zip Hoodie",
         variantImage: require('./assets/zip.jpg'),
-        cost: "$10"
+        details:"material",
+        id:5
         },
 
       ],
 
 
+      cartValue: 0,
+      cartList:[],
+
+
       methods: {
-        cart(){
-          this.cart +=1
+        addToCart() {
+          this.cartValue += 1
         },
-        total(){
-          this.total +=10
+
+        displayImg(variantImage) {
+          this.image = variantImage
         }
-      }
+      },
+
+       displayCart(){
+         this.cartList = 
+       }
+
 
     }
 
@@ -104,7 +122,7 @@ export default {
 .column-container{
   display:flex;
   flex-direction: column;
-  width:60vw;
+  width:35vw;
   justify-content: space-around;
   background-color: white;
   height: 30rem;
@@ -134,7 +152,7 @@ export default {
   /* border-left: dashed; */
   border-width: .1rem;
   /* background-color: blue; */
-  height: 20rem;
+  height: 5rem;
   /* width: 18rem; */
   border-radius: 0.4rem;
   font-size: 1rem;
@@ -146,7 +164,7 @@ export default {
   display: flex;
   flex-direction: row;
   width: 100vw;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 
@@ -154,6 +172,7 @@ export default {
 .cart{
   background-color: green;
   width: 20vw;
+  height: 50vh;
 }
 
 
