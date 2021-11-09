@@ -1,19 +1,20 @@
 <template>
   <div id="app">
     <HelloWorld msg="Shop"/>
-    <img :src="image" class="main-img" alt="Vue logo">
+    <img :src="mainImage" class="main-img" alt="Vue logo">
     <section class="box">
       <section class= "column-container">
         <h2 class="section-name">Selections</h2>
         <div class="column">
           <div v-for="type in types" :key="type.id" class="lists" id="lists">
-            <div @mouseover="displayImg(type.variantImage)">{{type.item}}</div>
+            <div @click="displayImg(type.variantImage)">{{type.item}}</div>
             <button v-on:click="addToCart" >Add to Cart</button>
           </div>
         </div>
       </section>
-            <section class="img">
-      </section>
+            <section class="details">
+              <img :src="image" alt="top image">
+            </section>
       <section class="cart">
         <p>Cart({{cartValue}})</p>
       </section>
@@ -35,38 +36,40 @@ export default {
     return{
       cartValue: 0,
       cartList:[],
+      details: [],
       product: "Tops",
       brand: "Vue Sadness",
-      image: require('./assets/main.jpg'),
+      mainImage: require('./assets/main.jpg'),
+      image: null,
       types: [
         {
         item: "Black Shirt",
         variantImage: require('./assets/blackShirt.jpg'),
-        details:["100% cot,ton", "gender nuetral", "summer wear"],
+        variantDetails:["100% cotton", "abcdef", "dark wear"],
         id:1
         },
                 {
         item: "Blue Button Down",
         variantImage: require('./assets/blueButton.jpg'),
-        details:"material",
+        variantDetails:["90% cotton", "ghijk", "casual wear"],
         id:2
         },
                 {
         item: "Blue Hoodie",
         variantImage: require('./assets/blueHoodie.jpg'),
-        details:"material",
+        variantDetails:["80% cotton", "lmnop", "comfort wear"],
         id:3
         },
                 {
         item: "White Shirt",
         variantImage: require('./assets/whiteShirt.jpg'),
-        details:"material",
+        variantDetails:["70% cotton", "qrstu", "light wear"],
         id:4
         },
                 {
         item: "Black Zip Hoodie",
         variantImage: require('./assets/zip.jpg'),
-        details:"material",
+        variantDetails:["60% cotton", "vwxyz", "winter wear"],
         id:5
         },
 
@@ -86,15 +89,20 @@ export default {
 
   },
    methods: {
-        addToCart() {
-     
-          this.cartValue += 1
-        },
+    addToCart() {
+      this.cartValue += 1
 
-        displayImg(variantImage) {
-          this.image = variantImage
-          return variantImage;
-        }
+    },
+
+    displayImg(variantImage) {
+      this.image = variantImage
+
+    },
+
+    // displayDetails(variantDetails) {
+    //   this.details = variantDetails
+    //   // return variantImage;
+    // },
       },
 }
 
@@ -177,7 +185,7 @@ export default {
 }
 
 
-.img{
+.details{
   width: 20rem;
   height: 20rem;
   border-style: solid;
