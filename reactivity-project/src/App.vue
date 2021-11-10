@@ -1,21 +1,28 @@
 <template>
   <div id="app">
     <HelloWorld msg="Shop"/>
-    <img :src="image" class="main-img" alt="Vue logo">
+    <img :src="mainImage" class="main-img" alt="Vue logo">
     <section class="box">
       <section class= "column-container">
         <h2 class="section-name">Selections</h2>
         <div class="column">
           <div v-for="type in types" :key="type.id" class="lists" id="lists">
-            <div @click="displayImg(type.variantImage)">{{type.item}}</div>
-            <button v-on:click="addToCart">Add to Cart</button>
-          </div>
+            <div @click="displayImg(type.variantImage)" class="types">
+              <div class="itemName">{{type.item}}</div>
+              <button v-on:click="addToCart">Add to Cart</button>
+            </div>
+          </div>  
         </div>
       </section>
-            <section class="detail">
+      <section class="img-box">
+        <img :src="image" alt="nothing" class="img">
+      </section>
+      <section class="details">
+
       </section>
       <section class="cart">
         <p>Cart({{cartValue}})</p>
+        <p class="cart-list"></p>
       </section>
 
     </section>
@@ -39,7 +46,8 @@ export default {
       detail: [],
       product: "Tops",
       brand: "Vue Sadness",
-      image: require('./assets/main.jpg'),
+      image: require('./assets/placeholder.jpg'),
+      mainImage: require('./assets/main.jpg'),
       types: [
         {
         item: "Black Shirt",
@@ -89,13 +97,19 @@ export default {
         methods: {
         addToCart() {
           this.cartValue += 1;
-          return this.cartList
+        },
+
+        Information(details) {
+          this.detail.push(details)
         },
 
         displayImg(variantImage) {
           this.image = variantImage
         },
 
+        displayCart(item) {
+          this.cartList.push(item)
+        },
       },
 }
 
@@ -151,15 +165,13 @@ export default {
 }
 
 .lists{
-  /* border-left: dashed; */
   border-width: .1rem;
-  /* background-color: blue; */
   height: 5rem;
-  /* width: 18rem; */
   border-radius: 0.4rem;
   font-size: 1rem;
- /*  display: flex;
-  flex-direction: row; */
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
 }
 
 .box{
@@ -178,13 +190,30 @@ export default {
 }
 
 
-.detail{
+.img-box{
   width: 20rem;
   height: 20rem;
   border-style: solid;
-  display: flex;
-  flex-direction: row;
   
+}
+
+.img{
+  height: 20rem;
+  width: 20rem;
+}
+
+.types{
+  border-style: solid;
+  width: 10rem;
+  padding: 1rem;
+}
+
+.itemName{
+  margin-bottom: 0.5rem;
+}
+
+.cartlist{
+  background-color: blue;
 }
 
 </style>
