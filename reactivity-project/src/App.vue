@@ -7,16 +7,22 @@
         <h2 class="section-name">Selections</h2>
         <div class="column">
           <div v-for="type in types" :key="type.id" class="lists" id="lists">
-            <div @click="displayImg(type.variantImage)">{{type.item}}</div>
-            <button v-on:click="addToCart" >Add to Cart</button>
-          </div>
+            <div @click="displayImg(type.variantImage)" class="types">
+              <div class="itemName">{{type.item}}</div>
+              <button v-on:click="addToCart">Add to Cart</button>
+            </div>
+          </div>  
         </div>
       </section>
-            <section class="details">
-              <img :src="image" alt="top image">
-            </section>
+      <section class="img-box">
+        <img :src="image" alt="nothing" class="img">
+      </section>
+      <section class="details">
+
+      </section>
       <section class="cart">
         <p>Cart({{cartValue}})</p>
+        <p class="cart-list"></p>
       </section>
 
     </section>
@@ -34,13 +40,14 @@ export default {
   },
   data(){
     return{
+
       cartValue: 0,
       cartList:[],
-      details: [],
+      detail: [],
       product: "Tops",
       brand: "Vue Sadness",
+      image: require('./assets/placeholder.jpg'),
       mainImage: require('./assets/main.jpg'),
-      image: null,
       types: [
         {
         item: "Black Shirt",
@@ -78,31 +85,31 @@ export default {
 
 
 
-     
 
-      //  displayCart(){
-      //    this.cartList = 
-      //  }
+
+
 
 
     }
 
   },
-   methods: {
-    addToCart() {
-      this.cartValue += 1
 
-    },
+        methods: {
+        addToCart() {
+          this.cartValue += 1;
+        },
 
-    displayImg(variantImage) {
-      this.image = variantImage
+        Information(details) {
+          this.detail.push(details)
+        },
 
-    },
+        displayImg(variantImage) {
+          this.image = variantImage
+        },
 
-    // displayDetails(variantDetails) {
-    //   this.details = variantDetails
-    //   // return variantImage;
-    // },
+        displayCart(item) {
+          this.cartList.push(item)
+        },
       },
 }
 
@@ -158,15 +165,13 @@ export default {
 }
 
 .lists{
-  /* border-left: dashed; */
   border-width: .1rem;
-  /* background-color: blue; */
   height: 5rem;
-  /* width: 18rem; */
   border-radius: 0.4rem;
   font-size: 1rem;
- /*  display: flex;
-  flex-direction: row; */
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
 }
 
 .box{
@@ -185,13 +190,30 @@ export default {
 }
 
 
-.details{
+.img-box{
   width: 20rem;
   height: 20rem;
   border-style: solid;
-  display: flex;
-  flex-direction: row;
   
+}
+
+.img{
+  height: 20rem;
+  width: 20rem;
+}
+
+.types{
+  border-style: solid;
+  width: 10rem;
+  padding: 1rem;
+}
+
+.itemName{
+  margin-bottom: 0.5rem;
+}
+
+.cartlist{
+  background-color: blue;
 }
 
 </style>
