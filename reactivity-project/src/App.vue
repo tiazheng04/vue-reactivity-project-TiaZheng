@@ -9,7 +9,7 @@
           <div v-for="type in types" :key="type.id" class="lists" id="lists">
             <div @click="displayImg(type.variantImage)" class="types">
               <div class="itemName">{{type.item}}</div>
-              <button v-on:click="addToCart">Add to Cart</button>
+              <button v-on:click=" displayCart()">Add to Cart</button>
             </div>
           </div>  
         </div>
@@ -22,7 +22,7 @@
       </section>
       <section class="cart">
         <p>Cart({{cartValue}})</p>
-        <p class="cart-list"></p>
+        <p class="cart-list">hello</p>
       </section>
 
     </section>
@@ -99,16 +99,20 @@ export default {
           this.cartValue += 1;
         },
 
-        Information(details) {
-          this.detail.push(details)
-        },
+
+
+        // Information(details) {
+        //   this.detail.push(details)
+        // },
 
         displayImg(variantImage) {
           this.image = variantImage
         },
 
-        displayCart(item) {
-          this.cartList.push(item)
+        displayCart() {
+           this.cartValue += 1;
+          this.cartList.push(this.item)
+
         },
       },
 }
