@@ -9,9 +9,15 @@
           <div v-for="type in types" :key="type.id" class="lists" id="lists">
             <div @click="displayImg(type.variantImage)" class="types">
               <div class="itemName">{{type.item}}</div>
-              <button v-on:click=" displayCart()">Add to Cart</button>
+              <button v-on:click="displayCart(types)">Add to Cart</button>
             </div>
           </div>  
+
+          <!-- <div v-for="item in types" :key="item" class="lists" id="lists">
+            <div @click="() => displayCart(item)" class="types">
+              {{item.text}}
+            </div>
+          </div>  -->
         </div>
       </section>
       <section class="img-box">
@@ -22,7 +28,7 @@
       </section>
       <section class="cart">
         <p>Cart({{cartValue}})</p>
-        <p class="cart-list">hello</p>
+        <p  class="cart-list">{{cartList}}</p>
       </section>
 
     </section>
@@ -83,6 +89,8 @@ export default {
       ],
 
 
+    
+
 
 
 
@@ -109,9 +117,10 @@ export default {
           this.image = variantImage
         },
 
-        displayCart() {
-           this.cartValue += 1;
-          this.cartList.push(this.item)
+        displayCart(types) {
+          this.cartValue += 1;
+          this.cartList.push(types)
+          console.log(this.cartList)
 
         },
       },
@@ -132,12 +141,13 @@ export default {
   padding: 2rem;
   font-size: 62.5%;
   background-color: rgb(160, 193, 236);
-  height: 100vh;
+  height: auto;
 }
 .main-img{
-  width: 30vw;
+  width: 30rem;
+  height: 15rem;
   margin: 2rem 0rem 4rem;
-  border-radius: 1rem;
+  border-radius: .5rem;
 }
 .column-container{
   display:flex;
@@ -145,7 +155,7 @@ export default {
   width:35vw;
   justify-content: space-around;
   background-color: white;
-  height: 30rem;
+  height: 20rem;
   align-items: center;
   border-radius: 2rem;
   padding: 3rem 0rem;
@@ -159,18 +169,18 @@ export default {
 
 .column{
   width: 20rem;
-  height: 25rem;
+  height: 20rem;
   /* display: flex;
   flex-direction: row; */
   align-items: center;
-  background-color: yellow;
-  padding-bottom: 2rem;
+  background-color: rgb(166, 160, 172);
+  padding-bottom: 1rem;
 
 }
 
 .lists{
   border-width: .1rem;
-  height: 5rem;
+  height: 4rem;
   border-radius: 0.4rem;
   font-size: 1rem;
   display: flex;
@@ -188,9 +198,10 @@ export default {
 
 
 .cart{
-  background-color: green;
+  background-color: rgb(37, 64, 73);
   width: 20vw;
   height: 50vh;
+  color: white;
 }
 
 
@@ -209,15 +220,13 @@ export default {
 .types{
   border-style: solid;
   width: 10rem;
-  padding: 1rem;
+  padding: .3rem;
 }
 
 .itemName{
   margin-bottom: 0.5rem;
+  font-size: .8rem;
 }
 
-.cartlist{
-  background-color: blue;
-}
 
 </style>
